@@ -50,10 +50,9 @@ addTag = () ->
                 xhrFields: 
                         withCredentials: true,
                 data: data).done ( msg ) ->
-                        alert( "Data Saved: " )
                         console.log msg
 
-        alert "Add tag"
+
         tagDialog.dialog("close")
 tagDialog = $( "#tag-dialog-form" ).dialog
               autoOpen: false,
@@ -63,7 +62,6 @@ tagDialog = $( "#tag-dialog-form" ).dialog
               buttons: 
                 "Add Tag": addTag,
                 Cancel: () ->
-                        alert "Cancel"
                         tagDialog.dialog( "close" )
 
 
@@ -81,10 +79,9 @@ addComment = () ->
                 xhrFields: 
                         withCredentials: true,
                 data: data).done ( msg ) ->
-                        alert( "Data Saved: " )
                         console.log msg
 
-        alert "Add comment"
+
         commentDialog.dialog("close")
 
 commentDialog = $( "#comment-dialog-form" ).dialog
@@ -95,7 +92,7 @@ commentDialog = $( "#comment-dialog-form" ).dialog
               buttons: 
                 "Add comment": addComment,
                 Cancel: () ->
-                        alert "Cancel"
+
                         commentDialog.dialog( "close" )
 
  
