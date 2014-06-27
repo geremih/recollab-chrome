@@ -1,6 +1,6 @@
 {
     "name": "__MSG_appName__",
-    "version": "0.0.31",
+    "version": "0.0.69",
     "manifest_version": 2,
     "description": "__MSG_appDescription__",
     "icons": {
@@ -35,6 +35,7 @@
             "js": [
                 "bower_components/jquery/dist/jquery.js",
                 "bower_components/jquery-ui/ui/jquery-ui.js",
+                "bower_components/mousetrap/mousetrap.js",
                 "scripts/contentscript.js"
             ],
             "run_at": "document_end",
@@ -46,6 +47,7 @@
         "history",
         "management",
         "http://*/*",
-        "https://*/*"
+        "https://*/*",
+        "http://localhost:3000/"
     ]
 }
