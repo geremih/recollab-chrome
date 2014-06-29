@@ -284,7 +284,7 @@ module.exports = function (grunt) {
                 'coffee:chrome',
             ],
             dist: [
-                'coffee:dist',
+                'coffee:chrome',
                 'imagemin',
                 'svgmin'
             ],
