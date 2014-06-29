@@ -33,6 +33,7 @@ comment_dialog_html  = '    <div id="comment-dialog-form">
       </form>
     </div> '
 
+server = "http://recollab.herokuapp.com"
 $("body").append(tag_dialog_html)
 $("body").append(comment_dialog_html)
 
@@ -44,7 +45,7 @@ addTag = () ->
         console.log data
         $.ajax(
                 type: "POST",
-                url: "http://localhost:3000/pages/",
+                url: server + "/pages/",
                 dataType: "JSON",
                 crossDomain: true,
                 xhrFields: 
@@ -73,7 +74,7 @@ addComment = () ->
         console.log data
         $.ajax(
                 type: "POST",
-                url: "http://localhost:3000/pages/",
+                url: server + "/pages/",
                 dataType: "JSON",
                 crossDomain: true,
                 xhrFields: 
