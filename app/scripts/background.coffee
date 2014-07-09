@@ -5,7 +5,7 @@ gotTags = false
 
 getTags = ->
         console.log "Getting tags"
-        $.get "http://localhost:3000/tags.json",
+        $.get "http://recollab.herokuapp.com/tags.json",
                 (data) ->
                         console.log "Got tags" +  data
                         tags = data

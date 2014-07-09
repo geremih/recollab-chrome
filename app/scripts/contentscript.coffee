@@ -22,14 +22,14 @@ console.log '\'Allo \'Allo! Content script'
 tag_dialog_html = '    <div id="tag-dialog-form">
       <form>
         <label for="tags">Tags </label>
-        <input type="text" id="tags" name="tags"> </input>
+        <input type="text" id="recollab-tags" name="tags"> </input>
       </form>
     </div>'
 
 comment_dialog_html  = '    <div id="comment-dialog-form">
       <form>
-        <label for="comment">Comments </label>
-        <input type="text" id="comment" name="comment"> </input>
+        <label for="comment">Comment </label>
+        <input type="text" id="recollab-comment" name="comment"> </input>
       </form>
     </div> '
 $("body").append(tag_dialog_html)
@@ -40,7 +40,7 @@ server = "http://recollab.herokuapp.com"
 addTag = () ->
         data = {
                 link: document.URL,
-                tags: $("#tags").val(),
+                tags: $("#recollab-tags").val(),
                 title: $(document).find("title").text()
                 }
         console.log data
@@ -70,7 +70,7 @@ tagDialog = $( "#tag-dialog-form" ).dialog
 addComment = () ->
         data = {
                 link: document.URL,
-                comment: $("#comment").val(),
+                comment: $("#recollab-comment").val(),
                 title: $(document).find("title").text()
                 }
         console.log data
@@ -127,11 +127,11 @@ extractLast = ( term ) ->
 
 
 
-$( "#tags").bind( "keydown", ( event ) ->
+$( "#recollab-tags").bind( "keydown", ( event ) ->
 
                 if ( event.keyCode == $.ui.keyCode.TAB &&  $( this ).autocomplete( "instance" ).menu.active ) 
                         event.preventDefault())
-$("#tags").autocomplete
+$("#recollab-tags").autocomplete
         minLength: 0,
         source: ( request, response ) ->
                 
