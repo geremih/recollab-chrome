@@ -32,15 +32,16 @@ comment_dialog_html  = '    <div id="comment-dialog-form">
         <input type="text" id="comment" name="comment"> </input>
       </form>
     </div> '
-
-server = "http://recollab.herokuapp.com"
 $("body").append(tag_dialog_html)
 $("body").append(comment_dialog_html)
+
+server = "http://recollab.herokuapp.com"
 
 addTag = () ->
         data = {
                 link: document.URL,
-                tags: $("#tags").val()
+                tags: $("#tags").val(),
+                title: $(document).find("title").text()
                 }
         console.log data
         $.ajax(
@@ -69,7 +70,8 @@ tagDialog = $( "#tag-dialog-form" ).dialog
 addComment = () ->
         data = {
                 link: document.URL,
-                comment: $("#comment").val()
+                comment: $("#comment").val(),
+                title: $(document).find("title").text()
                 }
         console.log data
         $.ajax(
@@ -108,5 +110,39 @@ Mousetrap.bind('alt+c', showCommentDialog)
 
 
 console.log "Its working!!"
-        
+availableTags = ["EMPTY"] 
+chrome.runtime.sendMessage  {greeting: "tags"},
+        (response) ->
+                availableTags = response.tags
+                console.log(response.tags)
+
+
+
+
+split = (val) ->
+        val.split( /,\s*/ )
+
+extractLast = ( term ) ->
+        split( term ).pop()
+
+
+
+$( "#tags").bind( "keydown", ( event ) ->
+
+                if ( event.keyCode == $.ui.keyCode.TAB &&  $( this ).autocomplete( "instance" ).menu.active ) 
+                        event.preventDefault())
+$("#tags").autocomplete
+        minLength: 0,
+        source: ( request, response ) ->
+                
+                response( $.ui.autocomplete.filter(availableTags, extractLast( request.term ) ) );
+        focus: ->
+                false
+        select: ( event, ui ) ->
+                        terms = split( this.value )
+                        terms.pop()
+                        terms.push( ui.item.value )
+                        terms.push( "" )
+                        this.value = terms.join( ", " )
+                        false
 
