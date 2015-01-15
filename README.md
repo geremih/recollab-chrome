@@ -2,10 +2,12 @@
 Chrome extension for recollab
 
 ## Installation
-Clone the repo  
-`npm install`  
-`grunt bowerInstall`  
-`grunt build`  
+Clone the repo
+```bash
+$ npm install  
+$ grunt bowerInstall  
+$ grunt build
+```
 
 ## Usage
 The Alt-c and Alt-t will add a comment or tag respectively.  
